@@ -67,7 +67,11 @@ public override void OnActionReceived(ActionBuffers vectorAction)
 
 ## Componenten
 
+`ENV` Deze compoment spawned in enviroments.
 
+`ObsticalSpawner` Deze spawned obstacels in om de 2 seconden.
+
+`EyeMover` De agent voor de jumper
 
 ## Configuratie
 
