@@ -19,15 +19,91 @@ Om natuurlijk te vermijden dat de speler niet de hele tijd springt, krijgt de sp
 
 ## Ray perception
 
+De rays verzorgt dat de agent weet waar en hoe ver het obstacal zig bevint.
+
 ![rays](ReadmeImages/Rays.jpg)
 
 ## Code
 
+Met dit deel van de code krijgt de agent om de seconde 0.1 Punt.
+Om de 2 minuten word het herstart.
+
+```csharp
+void Update()
+{
+    var d = Time.time - lastTime;
+    if(d > 1)
+    {
+        lastTime = Time.time;
+        AddReward(0.1f);
+    }
+    scoreBoard.text = "Score: " + GetCumulativeReward().ToString("f4");
+    time += 1 * Time.deltaTime;
+    if(time > 120)
+    {
+        time = 0;
+        EndEpisode();
+    }
+}
+```
+
+Als het brein van de agent denkt dat die moet gaan springen dan word er eerst gecheckt of dat hij wel degelijk op de grond is.
+
+```csharp
+public override void OnActionReceived(ActionBuffers vectorAction)
+{
+    var action = vectorAction.DiscreteActions;
+    // Agent need to jump
+    if (action[0] == 1)
+    {
+        if (IsGrounded)
+        {
+            Vector3 translation = transform.up * Speed * Time.deltaTime;
+            mRigidBody.velocity = translation;
+        }
+    }
+}
+```
+
 ## Componenten
+
+
 
 ## Configuratie
 
+Confegiratie van het brain traning
+
+```yaml
+behaviors:
+  jumper:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 32
+      buffer_size: 256
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 20
+      num_layers: 1
+      vis_encode_type: simple
+    reward_signals:
+      extrinsic:
+        gamma: 0.9
+        strength: 1.0
+    keep_checkpoints: 5
+    max_steps: 5000000000
+    time_horizon: 3
+    summary_freq: 10000
+```
+
 ## Resultaten en conclusie
+
+
 
 ## Instructies
 

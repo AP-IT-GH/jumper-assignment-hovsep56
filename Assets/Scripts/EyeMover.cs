@@ -48,7 +48,6 @@ public class EyeMover : Agent
     public override void OnEpisodeBegin()
     {
         lastTime = Time.time;
-        // mEnemy.transform.localPosition = new Vector3(11, 0.75f, 0);
         transform.localPosition = new Vector3(-11, 0.5f, 0);
         transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
     }
@@ -64,7 +63,6 @@ public class EyeMover : Agent
     public override void OnActionReceived(ActionBuffers vectorAction)
     {
         var action = vectorAction.DiscreteActions;
-        test = action.Array;
         // Agent need to jump
         if (action[0] == 1)
         {
