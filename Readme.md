@@ -107,7 +107,11 @@ behaviors:
 
 ## Resultaten en conclusie
 
+Training resultaat na een half uur.
 
+De agents halen een max van 8 punten.
+
+![level](ReadmeImages/ML-training.jpg)
 
 ## Instructies
 
