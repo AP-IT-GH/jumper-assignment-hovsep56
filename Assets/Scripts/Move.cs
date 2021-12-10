@@ -20,7 +20,7 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.localPosition.y < -1f)
+        if (transform.localPosition.x < -15f)
         {
             currentobject.transform.position = position;
             Destroy(gameObject);
