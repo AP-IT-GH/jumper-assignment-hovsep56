@@ -11,7 +11,7 @@ Als extra hebben we op laatste van deze document een paar optioneele functies ge
 
 In deze spel moet de speler (oranje blok) door het obstakel (rode rechthoekig blok) die langzaam naar het speler gaat, springen.
 
-Als het obstakel het speler raakt eindigt het episode en begint het proces opnieuw met een straf aan hun "reward" punten. Maar als de speler door het obstakel kan springen dan krijg de agent een beloning end begint de episode opnieuw.
+Als het obstakel het speler raakt krijgt hij een straf aan hun "reward" punten. Maar als de speler door het obstakel kan springen en langer dan 1 second dan krijg de agent een beloning
 
 Om natuurlijk te vermijden dat de speler niet de hele tijd springt, krijgt de speler een kleine beloning als hij de Plane aanraakt.
 
